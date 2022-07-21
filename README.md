@@ -23,5 +23,8 @@ Used Framewrok
 ## Debugging
 `npm run test-e2e:playwright -- --debug`
 
+## Migration
+We can migrate wp-e2e generic test cases from here[https://github.com/rtCamp/wp-e2e/tree/master/specs] using the steps mentioned in this[https://github.com/WordPress/gutenberg/pull/38570] 
+
 
 
