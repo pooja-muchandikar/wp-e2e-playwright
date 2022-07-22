@@ -24,7 +24,7 @@ test.describe( 'Add New Post', () => {
 
 
 		// A success notice should show up
-		page.waitForSelector( '.components-snackbar' );
+		page.locator( '.components-snackbar' );
 	} );
 } );
 
