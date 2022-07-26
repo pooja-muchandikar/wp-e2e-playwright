@@ -4,13 +4,13 @@
 const { test, expect } = require( '@wordpress/e2e-test-utils-playwright' );
 
 test.describe( 'Add New Post', () => {
-  test.beforeEach(async ({ admin, editor }) => {
+  test.beforeEach( async ( { admin, editor } ) => {
     const title = 'test post';
-    await admin.createNewPost({ title }); //Create a new post
+    await admin.createNewPost( { title } ); //Create a new post
     await editor.publishPost();
   });
 
-  test( 'Should edit post', async ({ page, admin }) => {
+  test( 'Should edit post', async ( { page, admin } ) => {
     await admin.visitAdminPage( '/' );
     await page.click( '#menu-posts' ); //Click on Posts Menu
     await page.waitForSelector( '#the-list' );
