@@ -5,7 +5,7 @@
 
 test.describe( 'Change timezone', () => {
 
-test( 'Should able to change time zone', async ( {admin,page} ) => {
+test( 'Should able to change time zone', async ( { admin,page } ) => {
 
     await admin.visitAdminPage( '/' );
 
