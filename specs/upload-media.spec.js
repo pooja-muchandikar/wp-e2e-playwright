@@ -4,7 +4,7 @@
 const { test, expect } = require('@wordpress/e2e-test-utils-playwright')
 
 test.describe('Upload Media', () => {
-  test('Should able to upload media', async ({ page, admin }) => {
+  test('Should able to upload media', async ( { page, admin } ) => {
     await admin.visitAdminPage('media-new.php')
 
     await expect(page.locator( "div[class='wrap'] h1" )).toHaveText( 'Upload Media' ) //Wait for Upload media text
