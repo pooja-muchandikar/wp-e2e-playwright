@@ -60,3 +60,4 @@ test.describe( 'Create and delete Taxonomy', () => {
     })
   })
 })
+;
