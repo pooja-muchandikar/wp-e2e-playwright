@@ -1,0 +1,44 @@
+version: 2.1
+jobs:
+  run-test:
+    docker:
+      - image: mcr.microsoft.com/playwright:v1.27.1-focal
+
+    # Steps to the job
+    steps:
+      - checkout
+
+      - run: 
+          name: Sets env vars based on branch name
+          environment:
+            WIN_RESULT: << pipeline.git.branch >>
+          command: |
+            if [ $WIN_RESULT == master ]; then
+              echo 'export BRANCH_NAMES="vip-master"' >> "$BASH_ENV"
+            else
+              echo 'export BRANCH_NAMES="vip-preprod"' >> "$BASH_ENV"
+            fi
+      - run:
+          name: Download dependency
+          command: npm install
+
+      - run: 
+          name: Download Playwright
+          command: npx playwright install
+
+      - run:
+          name: build run
+          command: npm run build
+
+      - run:
+          name: Run tests
+          command: npm run test-e2e:playwright -- specs/taxonomy-test.spec.js
+
+# Invoke jobs via workflows
+workflows:
+  run-test-workflow:
+    jobs:
+      - run-test:
+          filters:
+            branches:
+              only: master 
