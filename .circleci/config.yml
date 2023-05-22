@@ -18,6 +18,11 @@ jobs:
             else
               echo 'export BRANCH_NAMES="vip-preprod"' >> "$BASH_ENV"
             fi
+              
+      - key: npm-dependencies
+          paths:
+            - node_modules
+           
       - run:
           name: Download dependency
           command: npm install
@@ -41,4 +46,6 @@ workflows:
       - run-test:
           filters:
             branches:
-              only: master 
+              only: 
+                - master
+                - preprod
